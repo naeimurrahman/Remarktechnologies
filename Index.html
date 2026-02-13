@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>REMARK Pure Sine Wave IPS</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+html { scroll-behavior: smooth; }
+</style>
+</head>
+
+<body class="bg-gray-50 text-gray-800">
+
+<!-- HERO -->
+<section class="bg-gradient-to-r from-black via-gray-800 to-black text-white py-20">
+<div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
+<div>
+<h1 class="text-4xl md:text-5xl font-bold mb-6">
+গরমে লোডশেডিং? আর কষ্ট নয়।
+</h1>
+<p class="text-gray-300 mb-8">
+REMARK Pure Sine Wave IPS – Fan, Light, WiFi নিশ্চিন্ত ব্যাকআপ।
+</p>
+<a href="#products"
+class="bg-red-600 px-8 py-4 rounded-lg font-bold hover:bg-red-700 transition">
+🔥 মডেল দেখুন
+</a>
+</div>
+<div>
+<img src="https://res.cloudinary.com/dwifny8ar/image/upload/v1771012502/yrztmnrmyp7mbvuqgfmc.png"
+class="rounded-xl shadow-2xl border border-gray-700">
+</div>
+</div>
+</section>
+
+<!-- PRODUCT LIST -->
+<section id="products" class="py-20 bg-gray-100">
+<div class="max-w-6xl mx-auto px-6">
+<h2 class="text-4xl font-bold text-center mb-14">
+🔥 আমাদের জনপ্রিয় মডেলসমূহ
+</h2>
+
+<script>
+function closeAll(){
+document.querySelectorAll('.productDetails').forEach(el=>el.style.display='none');
+document.querySelectorAll('.orderFormBox').forEach(el=>el.style.display='none');
+}
+
+function toggleDetails(btn){
+let card = btn.closest('.productCard');
+let details = card.querySelector('.productDetails');
+if(details.style.display === "block"){
+details.style.display="none";
+}else{
+closeAll();
+details.style.display="block";
+details.scrollIntoView({behavior:"smooth"});
+}
+}
+
+function openOrderForm(btn, model){
+let card = btn.closest('.productCard');
+closeAll();
+card.querySelector('.productDetails').style.display="block";
+let formBox = card.querySelector('.orderFormBox');
+formBox.style.display="block";
+card.querySelector('input[name="model"]').value = model;
+formBox.scrollIntoView({behavior:"smooth"});
+}
+
+function handleSubmit(form){
+let successBox = form.closest('.orderFormBox').querySelector('.successMsg');
+form.style.display="none";
+successBox.style.display="block";
+
+setTimeout(function(){
+window.location.href="https://wa.me/8801729018222";
+},3000);
+
+return true;
+}
+</script>
+
+<div class="space-y-8">
+
+<!-- PRODUCT TEMPLATE -->
+<!-- 1 -->
+<div class="productCard bg-white p-6 rounded-2xl shadow">
+<div class="flex justify-between items-center cursor-pointer"
+onclick="toggleDetails(this)">
+<div>
+<h3 class="text-xl font-bold">RDIN-450DSP</h3>
+<p class="text-gray-500">400VA | ৳12,550</p>
+</div>
+<button class="bg-red-600 text-white px-4 py-2 rounded-lg">Details</button>
+</div>
+
+<div class="productDetails mt-4 text-gray-600" style="display:none;">
+<p>✔️ Pure Sine Wave</p>
+<p>✔️ 4–6 Hour Backup</p>
+<p>✔️ Smart Charging</p>
+<p>✔️ 18 Month Warranty</p>
+
+<button onclick="openOrderForm(this,'RDIN-450DSP (400VA) - ৳12,550')"
+class="mt-4 bg-black text-white px-5 py-2 rounded-lg">
+অর্ডার করুন
+</button>
+</div>
+
+<div class="orderFormBox mt-4" style="display:none;">
+<form action="https://script.google.com/macros/s/AKfycbx5mLc2O08KMkRK_X9X44yGruSVuWA2b7bYniD5rXSNulD9P-rv5e7g7y3YHXngeR-h/exec"
+method="POST"
+target="hidden_iframe"
+onsubmit="return handleSubmit(this)"
+class="bg-gray-50 p-6 rounded-xl shadow space-y-4">
+
+<input type="hidden" name="model">
+<input type="text" name="name" placeholder="আপনার নাম"
+class="w-full p-3 border rounded-lg" required>
+<input type="tel" name="phone" placeholder="আপনার নাম্বার"
+class="w-full p-3 border rounded-lg" required>
+<input type="text" name="area" placeholder="আপনার পূর্ণ ঠিকানা"
+class="w-full p-3 border rounded-lg" required>
+
+<button type="submit"
+class="w-full bg-red-600 text-white py-3 rounded-lg font-bold">
+অর্ডার সাবমিট করুন
+</button>
+
+</form>
+
+<div class="successMsg text-green-600 font-bold text-center py-6" style="display:none;">
+✅ অর্ডার সফল হয়েছে! <br>
+আমরা দ্রুত যোগাযোগ করবো। <br>
+WhatsApp এ রিডাইরেক্ট করা হচ্ছে...
+</div>
+</div>
+</div>
+
+<!-- 2 -->
+<div class="productCard bg-white p-6 rounded-2xl shadow">
+<div class="flex justify-between items-center cursor-pointer"
+onclick="toggleDetails(this)">
+<div>
+<h3 class="text-xl font-bold">RDIN-650DSP</h3>
+<p class="text-gray-500">600VA | ৳13,550</p>
+</div>
+<button class="bg-red-600 text-white px-4 py-2 rounded-lg">Details</button>
+</div>
+<div class="productDetails mt-4 text-gray-600" style="display:none;">
+<p>✔️ Pure Sine Wave</p>
+<p>✔️ 5 Hour Backup</p>
+<p>✔️ Smart Charging</p>
+<p>✔️ 18 Month Warranty</p>
+<button onclick="openOrderForm(this,'RDIN-650DSP (600VA) - ৳13,550')"
+class="mt-4 bg-black text-white px-5 py-2 rounded-lg">
+অর্ডার করুন
+</button>
+</div>
+<div class="orderFormBox mt-4" style="display:none;">
+<form action="https://script.google.com/macros/s/AKfycbx5mLc2O08KMkRK_X9X44yGruSVuWA2b7bYniD5rXSNulD9P-rv5e7g7y3YHXngeR-h/exec"
+method="POST"
+target="hidden_iframe"
+onsubmit="return handleSubmit(this)"
+class="bg-gray-50 p-6 rounded-xl shadow space-y-4">
+<input type="hidden" name="model">
+<input type="text" name="name" placeholder="আপনার নাম" class="w-full p-3 border rounded-lg" required>
+<input type="tel" name="phone" placeholder="আপনার নাম্বার" class="w-full p-3 border rounded-lg" required>
+<input type="text" name="area" placeholder="আপনার পূর্ণ ঠিকানা" class="w-full p-3 border rounded-lg" required>
+<button type="submit" class="w-full bg-red-600 text-white py-3 rounded-lg font-bold">
+অর্ডার সাবমিট করুন
+</button>
+</form>
+<div class="successMsg text-green-600 font-bold text-center py-6" style="display:none;">
+✅ অর্ডার সফল হয়েছে! WhatsApp এ রিডাইরেক্ট হচ্ছে...
+</div>
+</div>
+</div>
+
+<!-- 3 -->
+<div class="productCard bg-white p-6 rounded-2xl shadow border-2 border-red-600">
+<div class="flex justify-between items-center cursor-pointer"
+onclick="toggleDetails(this)">
+<div>
+<h3 class="text-xl font-bold">RDIN-800DSP ⭐ Best Seller</h3>
+<p class="text-gray-500">800VA | ৳14,550</p>
+</div>
+<button class="bg-red-600 text-white px-4 py-2 rounded-lg">Details</button>
+</div>
+<div class="productDetails mt-4 text-gray-600" style="display:none;">
+<p>✔️ Pure Sine Wave</p>
+<p>✔️ 5–6 Hour Backup</p>
+<p>✔️ 150–200Ah Support</p>
+<p>✔️ 18 Month Warranty</p>
+<button onclick="openOrderForm(this,'RDIN-800DSP (800VA) - ৳14,550')"
+class="mt-4 bg-black text-white px-5 py-2 rounded-lg">
+অর্ডার করুন
+</button>
+</div>
+<div class="orderFormBox mt-4" style="display:none;">
+<form action="https://script.google.com/macros/s/AKfycbx5mLc2O08KMkRK_X9X44yGruSVuWA2b7bYniD5rXSNulD9P-rv5e7g7y3YHXngeR-h/exec"
+method="POST"
+target="hidden_iframe"
+onsubmit="return handleSubmit(this)"
+class="bg-gray-50 p-6 rounded-xl shadow space-y-4">
+<input type="hidden" name="model">
+<input type="text" name="name" placeholder="আপনার নাম" class="w-full p-3 border rounded-lg" required>
+<input type="tel" name="phone" placeholder="আপনার নাম্বার" class="w-full p-3 border rounded-lg" required>
+<input type="text" name="area" placeholder="আপনার পূর্ণ ঠিকানা" class="w-full p-3 border rounded-lg" required>
+<button type="submit" class="w-full bg-red-600 text-white py-3 rounded-lg font-bold">
+অর্ডার সাবমিট করুন
+</button>
+</form>
+<div class="successMsg text-green-600 font-bold text-center py-6" style="display:none;">
+✅ অর্ডার সফল হয়েছে! WhatsApp এ রিডাইরেক্ট হচ্ছে...
+</div>
+</div>
+</div>
+
+<!-- 4 -->
+<div class="productCard bg-white p-6 rounded-2xl shadow">
+<div class="flex justify-between items-center cursor-pointer"
+onclick="toggleDetails(this)">
+<div>
+<h3 class="text-xl font-bold">RDIN-1250DSP</h3>
+<p class="text-gray-500">1200VA | ৳18,550</p>
+</div>
+<button class="bg-red-600 text-white px-4 py-2 rounded-lg">Details</button>
+</div>
+<div class="productDetails mt-4 text-gray-600" style="display:none;">
+<p>✔️ Pure Sine Wave</p>
+<p>✔️ Heavy Load Support</p>
+<p>✔️ 200Ah Support</p>
+<p>✔️ 18 Month Warranty</p>
+<button onclick="openOrderForm(this,'RDIN-1250DSP (1200VA) - ৳18,550')"
+class="mt-4 bg-black text-white px-5 py-2 rounded-lg">
+অর্ডার করুন
+</button>
+</div>
+<div class="orderFormBox mt-4" style="display:none;">
+<form action="https://script.google.com/macros/s/AKfycbx5mLc2O08KMkRK_X9X44yGruSVuWA2b7bYniD5rXSNulD9P-rv5e7g7y3YHXngeR-h/exec"
+method="POST"
+target="hidden_iframe"
+onsubmit="return handleSubmit(this)"
+class="bg-gray-50 p-6 rounded-xl shadow space-y-4">
+<input type="hidden" name="model">
+<input type="text" name="name" placeholder="আপনার নাম" class="w-full p-3 border rounded-lg" required>
+<input type="tel" name="phone" placeholder="আপনার নাম্বার" class="w-full p-3 border rounded-lg" required>
+<input type="text" name="area" placeholder="আপনার পূর্ণ ঠিকানা" class="w-full p-3 border rounded-lg" required>
+<button type="submit" class="w-full bg-red-600 text-white py-3 rounded-lg font-bold">
+অর্ডার সাবমিট করুন
+</button>
+</form>
+<div class="successMsg text-green-600 font-bold text-center py-6" style="display:none;">
+✅ অর্ডার সফল হয়েছে! WhatsApp এ রিডাইরেক্ট হচ্ছে...
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<iframe name="hidden_iframe" style="display:none;"></iframe>
+
+<!-- FOOTER -->
+<footer class="bg-black text-white py-10 text-center">
+<p>📞 যোগাযোগ: +8801729018222</p>
+<p>© 2026 REMARK Technologies</p>
+</footer>
+
+</body>
+</html>
