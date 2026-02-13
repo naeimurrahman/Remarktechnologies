@@ -15,6 +15,7 @@ html { scroll-behavior: smooth; }
 <!-- HERO -->
 <section class="bg-gradient-to-r from-black via-gray-800 to-black text-white py-20">
 <div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
+
 <div>
 <h1 class="text-4xl md:text-5xl font-bold mb-6">
 গরমে লোডশেডিং? আর কষ্ট নয়।
@@ -27,17 +28,63 @@ class="bg-red-600 px-8 py-4 rounded-lg font-bold hover:bg-red-700 transition">
 🔥 মডেল দেখুন
 </a>
 </div>
+
 <div>
 <img src="https://res.cloudinary.com/dwifny8ar/image/upload/v1771012502/yrztmnrmyp7mbvuqgfmc.png"
 class="rounded-xl shadow-2xl border border-gray-700">
 </div>
+
 </div>
 </section>
 
-<!-- PRODUCT LIST -->
+<!-- PROBLEM SECTION -->
+<section class="py-20 bg-white">
+<div class="max-w-6xl mx-auto px-6 text-center">
+<h2 class="text-4xl font-bold mb-12">
+😫 লোডশেডিং মানেই সমস্যা
+</h2>
+
+<div class="grid md:grid-cols-3 gap-8">
+
+<div class="bg-gray-100 p-8 rounded-2xl shadow">
+<h3 class="text-xl font-bold mb-3">🔥 ঘুম নষ্ট</h3>
+<p>রাতে ফ্যান বন্ধ, ঘুম হয় না, অস্বস্তি।</p>
+</div>
+
+<div class="bg-gray-100 p-8 rounded-2xl shadow">
+<h3 class="text-xl font-bold mb-3">💼 কাজ বন্ধ</h3>
+<p>বিদ্যুৎ না থাকলে কাজ থেমে যায়।</p>
+</div>
+
+<div class="bg-gray-100 p-8 rounded-2xl shadow">
+<h3 class="text-xl font-bold mb-3">📶 WiFi বন্ধ</h3>
+<p>ইন্টারনেট না থাকলে অফিস/ফ্রিল্যান্সিং বন্ধ।</p>
+</div>
+
+</div>
+</div>
+</section>
+
+<!-- SOLUTION SECTION -->
+<section class="py-20 bg-gray-100">
+<div class="max-w-4xl mx-auto px-6 text-center">
+<h2 class="text-4xl font-bold mb-8">
+✅ সমাধান – REMARK Pure Sine Wave IPS
+</h2>
+
+<p class="text-lg leading-relaxed text-gray-700">
+Pure Sine Wave প্রযুক্তি আপনার ইলেকট্রনিক্স সম্পূর্ণ নিরাপদ রাখে।
+৪–৬ ঘন্টা ব্যাকআপে Fan, Light, WiFi চালু রাখুন নিশ্চিন্তে।
+লোডশেডিং হলেও জীবন থামবে না।
+</p>
+</div>
+</section>
+
+<!-- PRODUCTS -->
 <section id="products" class="py-20 bg-gray-100">
-<div class="max-w-6xl mx-auto px-6">
-<h2 class="text-4xl font-bold text-center mb-14">
+<div class="max-w-5xl mx-auto px-6">
+
+<h2 class="text-4xl font-bold text-center mb-12">
 🔥 আমাদের জনপ্রিয় মডেলসমূহ
 </h2>
 
@@ -55,7 +102,6 @@ details.style.display="none";
 }else{
 closeAll();
 details.style.display="block";
-details.scrollIntoView({behavior:"smooth"});
 }
 }
 
@@ -66,19 +112,29 @@ card.querySelector('.productDetails').style.display="block";
 let formBox = card.querySelector('.orderFormBox');
 formBox.style.display="block";
 card.querySelector('input[name="model"]').value = model;
-formBox.scrollIntoView({behavior:"smooth"});
 }
 
-function handleSubmit(form){
-let successBox = form.closest('.orderFormBox').querySelector('.successMsg');
+function handleSubmit(e, form){
+e.preventDefault();
+let data = new FormData(form);
+
+fetch("https://script.google.com/macros/s/AKfycbx5mLc2O08KMkRK_X9X44yGruSVuWA2b7bYniD5rXSNulD9P-rv5e7g7y3YHXngeR-h/exec", {
+method: "POST",
+body: data,
+mode: "no-cors"
+});
+
 form.style.display="none";
-successBox.style.display="block";
+form.parentElement.querySelector('.successMsg').style.display="block";
+
+let name = data.get("name");
+let model = data.get("model");
 
 setTimeout(function(){
-window.location.href="https://wa.me/8801729018222";
-},3000);
-
-return true;
+window.location.href =
+"https://wa.me/8801729018222?text=" +
+encodeURIComponent("Hi, আমি " + name + "। আমি " + model + " অর্ডার করেছি।");
+},2500);
 }
 </script>
 
@@ -263,6 +319,10 @@ class="bg-gray-50 p-6 rounded-xl shadow space-y-4">
 </section>
 
 <iframe name="hidden_iframe" style="display:none;"></iframe>
+
+</div>
+</div>
+</section>
 
 <!-- FOOTER -->
 <footer class="bg-black text-white py-10 text-center">
