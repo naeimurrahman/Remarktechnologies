@@ -1,334 +1,294 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>REMARK Pure Sine Wave IPS</title>
-<script src="https://cdn.tailwindcss.com"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Remark Technology</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
 <style>
-html { scroll-behavior: smooth; }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Inter',sans-serif;
+scroll-behavior:smooth;
+}
+
+body{
+background:#0B0F1A;
+color:white;
+overflow-x:hidden;
+}
+
+/* ===== Animated Gradient Glow ===== */
+body::before{
+content:"";
+position:fixed;
+width:700px;
+height:700px;
+background:radial-gradient(circle,#5B6CFF,transparent 60%);
+top:-250px;
+left:-250px;
+filter:blur(140px);
+z-index:-1;
+animation:float 12s infinite alternate ease-in-out;
+}
+
+@keyframes float{
+from{transform:translate(0,0);}
+to{transform:translate(120px,100px);}
+}
+
+/* ===== Navbar ===== */
+nav{
+position:fixed;
+width:100%;
+top:0;
+left:0;
+padding:20px 0;
+background:rgba(11,15,26,0.6);
+backdrop-filter:blur(12px);
+border-bottom:1px solid rgba(255,255,255,0.08);
+z-index:999;
+}
+
+.nav-container{
+width:90%;
+max-width:1200px;
+margin:auto;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin-left:25px;
+font-weight:500;
+opacity:0.8;
+}
+
+nav a:hover{
+opacity:1;
+}
+
+/* ===== General Layout ===== */
+.container{
+width:90%;
+max-width:1200px;
+margin:auto;
+}
+
+section{
+padding:140px 0;
+opacity:0;
+transform:translateY(40px);
+transition:all 1s ease;
+}
+
+section.show{
+opacity:1;
+transform:translateY(0);
+}
+
+h1{
+font-size:56px;
+margin-bottom:20px;
+}
+
+h2{
+font-size:36px;
+margin-bottom:20px;
+text-align:center;
+}
+
+p{
+opacity:0.85;
+}
+
+.btn{
+display:inline-block;
+padding:14px 34px;
+border-radius:40px;
+text-decoration:none;
+font-weight:600;
+transition:0.3s;
+}
+
+.btn-primary{
+background:linear-gradient(90deg,#5B6CFF,#8F6BFF);
+color:white;
+}
+
+.btn-primary:hover{
+transform:scale(1.05);
+box-shadow:0 0 25px #5B6CFF;
+}
+
+.btn-outline{
+border:1px solid rgba(255,255,255,0.2);
+color:white;
+margin-left:15px;
+}
+
+/* ===== Hero ===== */
+.hero{
+display:flex;
+align-items:center;
+justify-content:space-between;
+flex-wrap:wrap;
+margin-top:120px;
+}
+
+.hero-text{
+max-width:550px;
+}
+
+.hero-img img{
+width:520px;
+max-width:100%;
+animation:floatImg 6s infinite ease-in-out;
+}
+
+@keyframes floatImg{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-15px);}
+}
+
+/* ===== Cards ===== */
+.card-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+margin-top:60px;
+}
+
+.glass{
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,0.08);
+border-radius:20px;
+padding:40px;
+transition:0.3s;
+}
+
+.glass:hover{
+transform:translateY(-8px);
+box-shadow:0 0 30px rgba(91,108,255,0.6);
+}
+
+/* ===== Pricing ===== */
+.pricing{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+gap:30px;
+margin-top:60px;
+}
+
+.price-card{
+text-align:center;
+}
+
+.price-card.popular{
+border:2px solid #5B6CFF;
+box-shadow:0 0 30px rgba(91,108,255,0.7);
+}
+
+/* ===== Footer ===== */
+footer{
+text-align:center;
+padding:60px 0;
+opacity:0.6;
+border-top:1px solid rgba(255,255,255,0.08);
+}
 </style>
 </head>
 
-<body class="bg-gray-50 text-gray-800">
+<body>
 
-<!-- HERO -->
-<section class="bg-gradient-to-r from-black via-gray-800 to-black text-white py-20">
-<div class="max-w-6xl mx-auto px-6 grid md:grid-cols-2 gap-10 items-center">
-
+<!-- Navbar -->
+<nav>
+<div class="nav-container">
+<div><strong>Remark Technology</strong></div>
 <div>
-<h1 class="text-4xl md:text-5xl font-bold mb-6">
-গরমে লোডশেডিং? আর কষ্ট নয়।
-</h1>
-<p class="text-gray-300 mb-8">
-REMARK Pure Sine Wave IPS – Fan, Light, WiFi নিশ্চিন্ত ব্যাকআপ।
-</p>
-<a href="#products"
-class="bg-red-600 px-8 py-4 rounded-lg font-bold hover:bg-red-700 transition">
-🔥 মডেল দেখুন
-</a>
+<a href="#features">Features</a>
+<a href="#pricing">Pricing</a>
+<a href="#contact">Contact</a>
+</div>
+</div>
+</nav>
+
+<!-- Hero -->
+<section>
+<div class="container hero">
+<div class="hero-text">
+<h1>Business Control. Reimagined.</h1>
+<p>সব অপারেশন, টিম এবং রেভিনিউ এখন একটিমাত্র স্মার্ট সিস্টেমে।</p>
+<br>
+<a href="#" class="btn btn-primary">ডেমো বুক করুন</a>
+<a href="#" class="btn btn-outline">প্ল্যাটফর্ম দেখুন</a>
 </div>
 
-<div>
-<img src="https://res.cloudinary.com/dwifny8ar/image/upload/v1771012502/yrztmnrmyp7mbvuqgfmc.png"
-class="rounded-xl shadow-2xl border border-gray-700">
-</div>
-
-</div>
-</section>
-
-<!-- PROBLEM SECTION -->
-<section class="py-20 bg-white">
-<div class="max-w-6xl mx-auto px-6 text-center">
-<h2 class="text-4xl font-bold mb-12">
-😫 লোডশেডিং মানেই সমস্যা
-</h2>
-
-<div class="grid md:grid-cols-3 gap-8">
-
-<div class="bg-gray-100 p-8 rounded-2xl shadow">
-<h3 class="text-xl font-bold mb-3">🔥 ঘুম নষ্ট</h3>
-<p>রাতে ফ্যান বন্ধ, ঘুম হয় না, অস্বস্তি।</p>
-</div>
-
-<div class="bg-gray-100 p-8 rounded-2xl shadow">
-<h3 class="text-xl font-bold mb-3">💼 কাজ বন্ধ</h3>
-<p>বিদ্যুৎ না থাকলে কাজ থেমে যায়।</p>
-</div>
-
-<div class="bg-gray-100 p-8 rounded-2xl shadow">
-<h3 class="text-xl font-bold mb-3">📶 WiFi বন্ধ</h3>
-<p>ইন্টারনেট না থাকলে অফিস/ফ্রিল্যান্সিং বন্ধ।</p>
-</div>
-
+<div class="hero-img">
+<img src="YOUR-DASHBOARD-IMAGE.png" alt="Dashboard">
 </div>
 </div>
 </section>
 
-<!-- SOLUTION SECTION -->
-<section class="py-20 bg-gray-100">
-<div class="max-w-4xl mx-auto px-6 text-center">
-<h2 class="text-4xl font-bold mb-8">
-✅ সমাধান – REMARK Pure Sine Wave IPS
-</h2>
-
-<p class="text-lg leading-relaxed text-gray-700">
-Pure Sine Wave প্রযুক্তি আপনার ইলেকট্রনিক্স সম্পূর্ণ নিরাপদ রাখে।
-৪–৬ ঘন্টা ব্যাকআপে Fan, Light, WiFi চালু রাখুন নিশ্চিন্তে।
-লোডশেডিং হলেও জীবন থামবে না।
-</p>
+<!-- Features -->
+<section id="features">
+<div class="container">
+<h2>Powerful Features</h2>
+<div class="card-grid">
+<div class="glass"><h3>Smart Automation</h3><p>ম্যানুয়াল কাজ অটোমেট করুন।</p></div>
+<div class="glass"><h3>Analytics</h3><p>লাইভ রিপোর্ট ও ডেটা ইনসাইট।</p></div>
+<div class="glass"><h3>Secure Cloud</h3><p>আপনার ডেটা নিরাপদ।</p></div>
+<div class="glass"><h3>Team Control</h3><p>রোল ভিত্তিক অ্যাক্সেস।</p></div>
+</div>
 </div>
 </section>
 
-<!-- PRODUCTS -->
-<section id="products" class="py-20 bg-gray-100">
-<div class="max-w-5xl mx-auto px-6">
+<!-- Pricing -->
+<section id="pricing">
+<div class="container">
+<h2>Pricing Plans</h2>
+<div class="pricing">
+<div class="glass price-card"><h3>Starter</h3><p>৳XXXX / মাস</p></div>
+<div class="glass price-card popular"><h3>Growth</h3><p>৳XXXX / মাস</p></div>
+<div class="glass price-card"><h3>Enterprise</h3><p>Custom Pricing</p></div>
+</div>
+</div>
+</section>
 
-<h2 class="text-4xl font-bold text-center mb-12">
-🔥 আমাদের জনপ্রিয় মডেলসমূহ
-</h2>
+<!-- CTA -->
+<section id="contact" style="text-align:center;">
+<div class="container">
+<h2>ম্যানেজ করা বন্ধ করুন। স্কেল করা শুরু করুন।</h2>
+<br>
+<a href="#" class="btn btn-primary">ডেমো বুক করুন</a>
+</div>
+</section>
+
+<footer>
+© 2026 Remark Technology. All rights reserved.
+</footer>
 
 <script>
-function closeAll(){
-document.querySelectorAll('.productDetails').forEach(el=>el.style.display='none');
-document.querySelectorAll('.orderFormBox').forEach(el=>el.style.display='none');
-}
+const sections = document.querySelectorAll("section");
 
-function toggleDetails(btn){
-let card = btn.closest('.productCard');
-let details = card.querySelector('.productDetails');
-if(details.style.display === "block"){
-details.style.display="none";
-}else{
-closeAll();
-details.style.display="block";
+window.addEventListener("scroll",()=>{
+sections.forEach(sec=>{
+const top = window.scrollY;
+const offset = sec.offsetTop - 400;
+if(top > offset){
+sec.classList.add("show");
 }
-}
-
-function openOrderForm(btn, model){
-let card = btn.closest('.productCard');
-closeAll();
-card.querySelector('.productDetails').style.display="block";
-let formBox = card.querySelector('.orderFormBox');
-formBox.style.display="block";
-card.querySelector('input[name="model"]').value = model;
-}
-
-function handleSubmit(e, form){
-e.preventDefault();
-let data = new FormData(form);
-
-fetch("https://script.google.com/macros/s/AKfycbx5mLc2O08KMkRK_X9X44yGruSVuWA2b7bYniD5rXSNulD9P-rv5e7g7y3YHXngeR-h/exec", {
-method: "POST",
-body: data,
-mode: "no-cors"
 });
-
-form.style.display="none";
-form.parentElement.querySelector('.successMsg').style.display="block";
-
-let name = data.get("name");
-let model = data.get("model");
-
-setTimeout(function(){
-window.location.href =
-"https://wa.me/8801729018222?text=" +
-encodeURIComponent("Hi, আমি " + name + "। আমি " + model + " অর্ডার করেছি।");
-},2500);
-}
+});
 </script>
-
-<div class="space-y-8">
-
-<!-- PRODUCT TEMPLATE -->
-<!-- 1 -->
-<div class="productCard bg-white p-6 rounded-2xl shadow">
-<div class="flex justify-between items-center cursor-pointer"
-onclick="toggleDetails(this)">
-<div>
-<h3 class="text-xl font-bold">RDIN-450DSP</h3>
-<p class="text-gray-500">400VA | ৳12,550</p>
-</div>
-<button class="bg-red-600 text-white px-4 py-2 rounded-lg">Details</button>
-</div>
-
-<div class="productDetails mt-4 text-gray-600" style="display:none;">
-<p>✔️ Pure Sine Wave</p>
-<p>✔️ 4–6 Hour Backup</p>
-<p>✔️ Smart Charging</p>
-<p>✔️ 18 Month Warranty</p>
-
-<button onclick="openOrderForm(this,'RDIN-450DSP (400VA) - ৳12,550')"
-class="mt-4 bg-black text-white px-5 py-2 rounded-lg">
-অর্ডার করুন
-</button>
-</div>
-
-<div class="orderFormBox mt-4" style="display:none;">
-<form action="https://script.google.com/macros/s/AKfycbx5mLc2O08KMkRK_X9X44yGruSVuWA2b7bYniD5rXSNulD9P-rv5e7g7y3YHXngeR-h/exec"
-method="POST"
-target="hidden_iframe"
-onsubmit="return handleSubmit(this)"
-class="bg-gray-50 p-6 rounded-xl shadow space-y-4">
-
-<input type="hidden" name="model">
-<input type="text" name="name" placeholder="আপনার নাম"
-class="w-full p-3 border rounded-lg" required>
-<input type="tel" name="phone" placeholder="আপনার নাম্বার"
-class="w-full p-3 border rounded-lg" required>
-<input type="text" name="area" placeholder="আপনার পূর্ণ ঠিকানা"
-class="w-full p-3 border rounded-lg" required>
-
-<button type="submit"
-class="w-full bg-red-600 text-white py-3 rounded-lg font-bold">
-অর্ডার সাবমিট করুন
-</button>
-
-</form>
-
-<div class="successMsg text-green-600 font-bold text-center py-6" style="display:none;">
-✅ অর্ডার সফল হয়েছে! <br>
-আমরা দ্রুত যোগাযোগ করবো। <br>
-WhatsApp এ রিডাইরেক্ট করা হচ্ছে...
-</div>
-</div>
-</div>
-
-<!-- 2 -->
-<div class="productCard bg-white p-6 rounded-2xl shadow">
-<div class="flex justify-between items-center cursor-pointer"
-onclick="toggleDetails(this)">
-<div>
-<h3 class="text-xl font-bold">RDIN-650DSP</h3>
-<p class="text-gray-500">600VA | ৳13,550</p>
-</div>
-<button class="bg-red-600 text-white px-4 py-2 rounded-lg">Details</button>
-</div>
-<div class="productDetails mt-4 text-gray-600" style="display:none;">
-<p>✔️ Pure Sine Wave</p>
-<p>✔️ 5 Hour Backup</p>
-<p>✔️ Smart Charging</p>
-<p>✔️ 18 Month Warranty</p>
-<button onclick="openOrderForm(this,'RDIN-650DSP (600VA) - ৳13,550')"
-class="mt-4 bg-black text-white px-5 py-2 rounded-lg">
-অর্ডার করুন
-</button>
-</div>
-<div class="orderFormBox mt-4" style="display:none;">
-<form action="https://script.google.com/macros/s/AKfycbx5mLc2O08KMkRK_X9X44yGruSVuWA2b7bYniD5rXSNulD9P-rv5e7g7y3YHXngeR-h/exec"
-method="POST"
-target="hidden_iframe"
-onsubmit="return handleSubmit(this)"
-class="bg-gray-50 p-6 rounded-xl shadow space-y-4">
-<input type="hidden" name="model">
-<input type="text" name="name" placeholder="আপনার নাম" class="w-full p-3 border rounded-lg" required>
-<input type="tel" name="phone" placeholder="আপনার নাম্বার" class="w-full p-3 border rounded-lg" required>
-<input type="text" name="area" placeholder="আপনার পূর্ণ ঠিকানা" class="w-full p-3 border rounded-lg" required>
-<button type="submit" class="w-full bg-red-600 text-white py-3 rounded-lg font-bold">
-অর্ডার সাবমিট করুন
-</button>
-</form>
-<div class="successMsg text-green-600 font-bold text-center py-6" style="display:none;">
-✅ অর্ডার সফল হয়েছে! WhatsApp এ রিডাইরেক্ট হচ্ছে...
-</div>
-</div>
-</div>
-
-<!-- 3 -->
-<div class="productCard bg-white p-6 rounded-2xl shadow border-2 border-red-600">
-<div class="flex justify-between items-center cursor-pointer"
-onclick="toggleDetails(this)">
-<div>
-<h3 class="text-xl font-bold">RDIN-800DSP ⭐ Best Seller</h3>
-<p class="text-gray-500">800VA | ৳14,550</p>
-</div>
-<button class="bg-red-600 text-white px-4 py-2 rounded-lg">Details</button>
-</div>
-<div class="productDetails mt-4 text-gray-600" style="display:none;">
-<p>✔️ Pure Sine Wave</p>
-<p>✔️ 5–6 Hour Backup</p>
-<p>✔️ 150–200Ah Support</p>
-<p>✔️ 18 Month Warranty</p>
-<button onclick="openOrderForm(this,'RDIN-800DSP (800VA) - ৳14,550')"
-class="mt-4 bg-black text-white px-5 py-2 rounded-lg">
-অর্ডার করুন
-</button>
-</div>
-<div class="orderFormBox mt-4" style="display:none;">
-<form action="https://script.google.com/macros/s/AKfycbx5mLc2O08KMkRK_X9X44yGruSVuWA2b7bYniD5rXSNulD9P-rv5e7g7y3YHXngeR-h/exec"
-method="POST"
-target="hidden_iframe"
-onsubmit="return handleSubmit(this)"
-class="bg-gray-50 p-6 rounded-xl shadow space-y-4">
-<input type="hidden" name="model">
-<input type="text" name="name" placeholder="আপনার নাম" class="w-full p-3 border rounded-lg" required>
-<input type="tel" name="phone" placeholder="আপনার নাম্বার" class="w-full p-3 border rounded-lg" required>
-<input type="text" name="area" placeholder="আপনার পূর্ণ ঠিকানা" class="w-full p-3 border rounded-lg" required>
-<button type="submit" class="w-full bg-red-600 text-white py-3 rounded-lg font-bold">
-অর্ডার সাবমিট করুন
-</button>
-</form>
-<div class="successMsg text-green-600 font-bold text-center py-6" style="display:none;">
-✅ অর্ডার সফল হয়েছে! WhatsApp এ রিডাইরেক্ট হচ্ছে...
-</div>
-</div>
-</div>
-
-<!-- 4 -->
-<div class="productCard bg-white p-6 rounded-2xl shadow">
-<div class="flex justify-between items-center cursor-pointer"
-onclick="toggleDetails(this)">
-<div>
-<h3 class="text-xl font-bold">RDIN-1250DSP</h3>
-<p class="text-gray-500">1200VA | ৳18,550</p>
-</div>
-<button class="bg-red-600 text-white px-4 py-2 rounded-lg">Details</button>
-</div>
-<div class="productDetails mt-4 text-gray-600" style="display:none;">
-<p>✔️ Pure Sine Wave</p>
-<p>✔️ Heavy Load Support</p>
-<p>✔️ 200Ah Support</p>
-<p>✔️ 18 Month Warranty</p>
-<button onclick="openOrderForm(this,'RDIN-1250DSP (1200VA) - ৳18,550')"
-class="mt-4 bg-black text-white px-5 py-2 rounded-lg">
-অর্ডার করুন
-</button>
-</div>
-<div class="orderFormBox mt-4" style="display:none;">
-<form action="https://script.google.com/macros/s/AKfycbx5mLc2O08KMkRK_X9X44yGruSVuWA2b7bYniD5rXSNulD9P-rv5e7g7y3YHXngeR-h/exec"
-method="POST"
-target="hidden_iframe"
-onsubmit="return handleSubmit(this)"
-class="bg-gray-50 p-6 rounded-xl shadow space-y-4">
-<input type="hidden" name="model">
-<input type="text" name="name" placeholder="আপনার নাম" class="w-full p-3 border rounded-lg" required>
-<input type="tel" name="phone" placeholder="আপনার নাম্বার" class="w-full p-3 border rounded-lg" required>
-<input type="text" name="area" placeholder="আপনার পূর্ণ ঠিকানা" class="w-full p-3 border rounded-lg" required>
-<button type="submit" class="w-full bg-red-600 text-white py-3 rounded-lg font-bold">
-অর্ডার সাবমিট করুন
-</button>
-</form>
-<div class="successMsg text-green-600 font-bold text-center py-6" style="display:none;">
-✅ অর্ডার সফল হয়েছে! WhatsApp এ রিডাইরেক্ট হচ্ছে...
-</div>
-</div>
-</div>
-
-</div>
-</div>
-</section>
-
-<iframe name="hidden_iframe" style="display:none;"></iframe>
-
-</div>
-</div>
-</section>
-
-<!-- FOOTER -->
-<footer class="bg-black text-white py-10 text-center">
-<p>📞 যোগাযোগ: +8801729018222</p>
-<p>© 2026 REMARK Technologies</p>
-</footer>
 
 </body>
 </html>
