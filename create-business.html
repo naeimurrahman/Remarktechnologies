@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Create Business - CATY</title>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getAuth, onAuthStateChanged }
+from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  query,
+  where,
+  getDocs
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig={
+  apiKey:"AIzaSyCAE8_fQ8f8ElDWmxZCws6oGrnaSbaK1ZE",
+  authDomain:"business-saas-cc546.firebaseapp.com",
+  projectId:"business-saas-cc546"
+};
+
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app);
+const db=getFirestore(app);
+
+let currentUser=null;
+
+onAuthStateChanged(auth, async user=>{
+  if(!user) window.location.href="login.html";
+  else{
+    currentUser=user;
+
+    // check if business exists
+    const q=query(collection(db,"businesses"),where("ownerId","==",user.uid));
+    const snap=await getDocs(q);
+
+    if(!snap.empty){
+      window.location.href="dashboard.html";
+    }
+  }
+});
+
+window.createBusiness=async function(){
+
+  const name=document.getElementById("name").value;
+  const phone=document.getElementById("phone").value;
+  const category=document.getElementById("category").value;
+  const currency=document.getElementById("currency").value;
+  const logo=document.getElementById("logo").value;
+
+  if(!name || !phone || !category || !currency){
+    alert("Fill all required fields");
+    return;
+  }
+
+  const docRef=await addDoc(collection(db,"businesses"),{
+    name,
+    phone,
+    category,
+    currency,
+    logo,
+    ownerId:currentUser.uid,
+    createdAt:new Date()
+  });
+
+  window.location.href="dashboard.html";
+};
+</script>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#0F172A;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.card{
+background:#111827;
+padding:40px;
+border-radius:12px;
+width:400px;
+}
+
+input,select{
+width:100%;
+padding:10px;
+margin-bottom:10px;
+border:none;
+border-radius:8px;
+}
+
+button{
+width:100%;
+padding:12px;
+background:#4F46E5;
+border:none;
+color:white;
+border-radius:20px;
+cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+<h2>Create Your Business</h2>
+
+<input id="name" placeholder="Business Name *">
+<input id="phone" placeholder="Phone *">
+
+<select id="category">
+<option value="">Select Category *</option>
+<option>Agency</option>
+<option>E-commerce</option>
+<option>Freelance</option>
+<option>Coaching</option>
+<option>Other</option>
+</select>
+
+<select id="currency">
+<option value="">Select Currency *</option>
+<option>৳ BDT</option>
+<option>$ USD</option>
+<option>₹ INR</option>
+</select>
+
+<input id="logo" placeholder="Logo URL (optional)">
+
+<button onclick="createBusiness()">Create Business</button>
+
+</div>
+
+</body>
+</html>
