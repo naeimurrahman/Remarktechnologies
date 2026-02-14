@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clients - Remark</title>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { 
+  getAuth, 
+  onAuthStateChanged 
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+import {
+  getFirestore,
+  collection,
+  addDoc,
+  getDocs,
+  query,
+  where
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCAE8_fQ8f8ElDWmxZCws6oGrnaSbaK1ZE",
+  authDomain: "business-saas-cc546.firebaseapp.com",
+  projectId: "business-saas-cc546",
+  storageBucket: "business-saas-cc546.firebasestorage.app",
+  messagingSenderId: "539985477074",
+  appId: "1:539985477074:web:287170d792391f60089c0b"
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+let currentUser = null;
+
+onAuthStateChanged(auth, async (user) => {
+  if(!user){
+    window.location.href = "login.html";
+  } else {
+    currentUser = user;
+    loadClients();
+  }
+});
+
+window.addClient = async function(){
+  const name = document.getElementById("clientName").value;
+  const revenue = document.getElementById("clientRevenue").value;
+
+  if(!name || !revenue) return alert("Fill all fields");
+
+  await addDoc(collection(db,"clients"),{
+    userId: currentUser.uid,
+    name: name,
+    revenue: Number(revenue),
+    createdAt: new Date()
+  });
+
+  document.getElementById("clientName").value="";
+  document.getElementById("clientRevenue").value="";
+  loadClients();
+};
+
+async function loadClients(){
+  const q = query(collection(db,"clients"), where("userId","==",currentUser.uid));
+  const querySnapshot = await getDocs(q);
+
+  const table = document.getElementById("clientTable");
+  table.innerHTML = "";
+
+  let totalRevenue = 0;
+
+  querySnapshot.forEach((doc)=>{
+    const data = doc.data();
+    totalRevenue += data.revenue;
+
+    table.innerHTML += `
+      <tr>
+        <td>${data.name}</td>
+        <td>৳${data.revenue}</td>
+      </tr>
+    `;
+  });
+
+  document.getElementById("totalRevenue").innerText = "৳" + totalRevenue;
+}
+</script>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#0F172A;
+color:white;
+padding:30px;
+}
+
+input{
+padding:8px;
+margin-right:10px;
+border-radius:6px;
+border:none;
+}
+
+button{
+padding:8px 15px;
+background:#4F46E5;
+border:none;
+color:white;
+border-radius:15px;
+cursor:pointer;
+}
+
+table{
+margin-top:20px;
+width:100%;
+border-collapse:collapse;
+}
+
+th,td{
+padding:10px;
+border-bottom:1px solid #333;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Clients</h2>
+
+<h3>Total Revenue: <span id="totalRevenue">৳0</span></h3>
+
+<br>
+
+<input id="clientName" placeholder="Client Name">
+<input id="clientRevenue" type="number" placeholder="Revenue">
+<button onclick="addClient()">Add Client</button>
+
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Revenue</th>
+</tr>
+</thead>
+<tbody id="clientTable"></tbody>
+</table>
+
+</body>
+</html>
