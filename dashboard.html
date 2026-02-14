@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Dashboard</title>
+<title>Dashboard - Remark</title>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
@@ -29,16 +29,37 @@ onAuthStateChanged(auth, user => {
 });
 
 window.logout = function(){
-  signOut(auth);
-  window.location.href="index.html";
+  signOut(auth).then(()=>{
+    window.location.href="index.html";
+  });
 }
-
 </script>
+
+<style>
+body{
+margin:0;
+background:#0B0F1A;
+color:white;
+font-family:Arial;
+text-align:center;
+padding-top:100px;
+}
+button{
+padding:10px 20px;
+border:none;
+background:#5B6CFF;
+color:white;
+border-radius:20px;
+cursor:pointer;
+}
+</style>
+
 </head>
 
 <body>
 <h2>Welcome to Remark SaaS Dashboard</h2>
-<p>You are successfully logged in.</p>
+<p>You are logged in successfully.</p>
+<br>
 <button onclick="logout()">Logout</button>
 </body>
 </html>
