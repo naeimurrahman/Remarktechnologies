@@ -5,75 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Signup - Remark</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
-<style>
-body{
-margin:0;
-font-family:'Inter',sans-serif;
-background:#0B0F1A;
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-color:white;
-}
-
-.card{
-background:rgba(255,255,255,0.05);
-padding:50px;
-border-radius:20px;
-backdrop-filter:blur(10px);
-border:1px solid rgba(255,255,255,0.08);
-width:350px;
-}
-
-h2{
-text-align:center;
-margin-bottom:30px;
-}
-
-input{
-width:100%;
-padding:12px;
-margin-bottom:15px;
-border-radius:10px;
-border:none;
-outline:none;
-}
-
-button{
-width:100%;
-padding:12px;
-border-radius:30px;
-border:none;
-background:linear-gradient(90deg,#5B6CFF,#8F6BFF);
-color:white;
-font-weight:600;
-cursor:pointer;
-}
-
-button:hover{
-opacity:0.9;
-}
-
-a{
-display:block;
-text-align:center;
-margin-top:15px;
-color:#8F6BFF;
-text-decoration:none;
-}
-
-#error{
-color:#ff6b6b;
-margin-bottom:10px;
-text-align:center;
-}
-</style>
-
 <script type="module">
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword } 
 from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
@@ -92,41 +24,69 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
 window.signup = function(){
-
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
-  const errorDiv = document.getElementById("error");
-
-  errorDiv.innerText = "";
 
   createUserWithEmailAndPassword(auth, email, password)
   .then(()=>{
-    window.location.href = "dashboard.html";
+    window.location.href="dashboard.html";
   })
   .catch(error=>{
-    errorDiv.innerText = error.message;
+    document.getElementById("error").innerText = error.message;
   });
-
 }
-
 </script>
 
+<style>
+body{
+margin:0;
+background:#0B0F1A;
+font-family:Arial;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+color:white;
+}
+.card{
+background:#111827;
+padding:40px;
+border-radius:15px;
+width:320px;
+}
+input{
+width:100%;
+padding:10px;
+margin-bottom:15px;
+border:none;
+border-radius:8px;
+}
+button{
+width:100%;
+padding:10px;
+background:#5B6CFF;
+border:none;
+color:white;
+border-radius:20px;
+cursor:pointer;
+}
+#error{
+color:red;
+margin-bottom:10px;
+}
+a{color:#8F6BFF;text-decoration:none;}
+</style>
 </head>
 
 <body>
-
 <div class="card">
 <h2>Create Account</h2>
-
 <div id="error"></div>
-
 <input id="email" type="email" placeholder="Email">
 <input id="password" type="password" placeholder="Password">
-
 <button onclick="signup()">Sign Up</button>
-
-<a href="login.html">Already have an account?</a>
+<br><br>
+<a href="login.html">Already have account?</a>
 </div>
-
 </body>
 </html>
