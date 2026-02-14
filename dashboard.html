@@ -2,7 +2,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dashboard - Remark</title>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
@@ -15,8 +18,7 @@ const firebaseConfig = {
   projectId: "business-saas-cc546",
   storageBucket: "business-saas-cc546.firebasestorage.app",
   messagingSenderId: "539985477074",
-  appId: "1:539985477074:web:287170d792391f60089c0b",
-  measurementId: "G-6EH7REGMCC"
+  appId: "1:539985477074:web:287170d792391f60089c0b"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -25,6 +27,8 @@ const auth = getAuth(app);
 onAuthStateChanged(auth, user => {
   if(!user){
     window.location.href="login.html";
+  } else {
+    document.getElementById("userEmail").innerText = user.email;
   }
 });
 
@@ -38,14 +42,70 @@ window.logout = function(){
 <style>
 body{
 margin:0;
+font-family:Arial;
 background:#0B0F1A;
 color:white;
-font-family:Arial;
-text-align:center;
-padding-top:100px;
+display:flex;
 }
+
+.sidebar{
+width:220px;
+background:#111827;
+height:100vh;
+padding:20px;
+position:fixed;
+}
+
+.sidebar h2{
+margin-bottom:30px;
+}
+
+.sidebar a{
+display:block;
+color:white;
+text-decoration:none;
+margin-bottom:15px;
+opacity:0.8;
+}
+
+.sidebar a:hover{
+opacity:1;
+}
+
+.main{
+margin-left:220px;
+padding:30px;
+width:100%;
+}
+
+.topbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+margin-bottom:30px;
+}
+
+.card-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+gap:20px;
+margin-bottom:40px;
+}
+
+.card{
+background:#111827;
+padding:20px;
+border-radius:10px;
+}
+
+canvas{
+background:#111827;
+padding:20px;
+border-radius:10px;
+}
+
 button{
-padding:10px 20px;
+padding:8px 15px;
 border:none;
 background:#5B6CFF;
 color:white;
@@ -57,9 +117,80 @@ cursor:pointer;
 </head>
 
 <body>
-<h2>Welcome to Remark SaaS Dashboard</h2>
-<p>You are logged in successfully.</p>
+
+<div class="sidebar">
+<h2>Remark</h2>
+<a href="#">Dashboard</a>
+<a href="#">Clients</a>
+<a href="#">Analytics</a>
+<a href="#">Settings</a>
+<a href="#" onclick="logout()">Logout</a>
+</div>
+
+<div class="main">
+
+<div class="topbar">
+<h2>Dashboard Overview</h2>
+<div>
+Logged in as: <span id="userEmail"></span>
+</div>
+</div>
+
+<div class="card-grid">
+<div class="card">
+<h3>Total Revenue</h3>
+<p>৳120,000</p>
+</div>
+
+<div class="card">
+<h3>Active Clients</h3>
+<p>45</p>
+</div>
+
+<div class="card">
+<h3>Monthly Growth</h3>
+<p>+18%</p>
+</div>
+
+<div class="card">
+<h3>Pending Tasks</h3>
+<p>12</p>
+</div>
+</div>
+
+<h3>Revenue Overview</h3>
 <br>
-<button onclick="logout()">Logout</button>
+<canvas id="myChart" height="100"></canvas>
+
+</div>
+
+<script>
+const ctx = document.getElementById('myChart');
+
+new Chart(ctx, {
+  type: 'line',
+  data: {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+    datasets: [{
+      label: 'Revenue',
+      data: [20000, 35000, 40000, 30000, 50000, 70000],
+      borderColor: '#5B6CFF',
+      tension: 0.3
+    }]
+  },
+  options: {
+    plugins: {
+      legend: {
+        labels: { color: "white" }
+      }
+    },
+    scales: {
+      x: { ticks: { color: "white" } },
+      y: { ticks: { color: "white" } }
+    }
+  }
+});
+</script>
+
 </body>
 </html>
